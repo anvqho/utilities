@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bill Splitter</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+    .names-section { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid #eee; }
+    .names-section .input-row { display: flex; gap: 8px; margin-bottom: 8px; }
+    .names-section input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+    .name-tag { display: inline-block; background: #e8e8e8; padding: 4px 10px; border-radius: 12px; margin: 2px 4px 2px 0; font-size: 13px; }
+    .item { margin-bottom: 16px; padding: 12px; border: 1px solid #ddd; border-radius: 6px; }
+    .item .row { display: flex; gap: 8px; margin-bottom: 8px; }
+    .item input[type="text"] { padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+    .item input[type="text"]:first-child { flex: 1; }
+    .item .amount { width: 120px; }
+    .dollar-input { display: inline-flex; align-items: center; }
+    .dollar-input::before { content: '$'; margin-right: 4px; font-size: 14px; }
+    .checks label { display: inline-block; margin-right: 12px; font-size: 13px; cursor: pointer; }
+    button { padding: 8px 16px; font-size: 20px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; }
+    button:hover { background: #f0f0f0; }
+    .btn-sm { font-size: 14px; padding: 6px 14px; }
+    #summary { font-size: 14px; }
+    #summary table { border-collapse: collapse; width: 100%; }
+    #summary th, #summary td { text-align: left; padding: 6px 10px; border-bottom: 1px solid #eee; }
+    #summary th { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Bill Splitter</h1>
+
+  <div class="names-section">
+    <h2>Names</h2>
+    <div class="input-row">
+      <input type="text" id="nameInput" placeholder="Enter name(s)">
+      <button class="btn-sm" onclick="saveName()">Save</button>
+    </div>
+    <div id="namesList"></div>
+  </div>
+
+  <div class="names-section">
+    <h2>Total</h2>
+    <div class="input-row">
+      <span class="dollar-input"><input type="text" id="totalInput" placeholder="0.00" style="width:120px; flex:none;"></span>
+      <button class="btn-sm" onclick="saveTotal()">Save</button>
+    </div>
+    <div id="savedTotal"></div>
+  </div>
+
+  <h2>Items</h2>
+  <div id="list"></div>
+  <button onclick="addRow()">+</button>
+
+  <h2>Amounts by Name</h2>
+  <div id="summary"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
